@@ -3,10 +3,8 @@
 <input type="email" id="email" required placeholder="Email">
 <input type="password" id="password" required placeholder="password">
 <button onclick="register()">Register</button>
-<button onclick="reset()">reset</button>
 <p style="background-color: red;" id="verify">a</p>
 <style>
-
 #email:hover{
   border-color: blue;
 
@@ -26,40 +24,35 @@
   localStorage.password = pass
   document.getElementById("password").value = ""
   email = document.getElementById("email").value
-  localStorage.password = pass
   localStorage.mail = email
   document.getElementById("email").value = ""
   }
 </script>
 <!--Login-->
 
-<input type="email1">
-<input type="password1">
+<input type="email">
+<input type="password" id="password1">
 <button onclick="Login()">Login</button>
-
+<button onclick="Reset()">Reset</button>
 <style>
 
 </style>
 
 <script>
-  let passlog = localStorage.password
-  let color = "Green"
-  
-  function Login(){
-  if (passlog == localStorage.password){
-  document.getElementById("verify").style.backgroundColor = color
+ function Login(){
+  let passlog = document.getElementById("password1").value;
+  let storedpass = localStorage.getItem("password")
+  if (passlog == storedpass){
+  document.getElementById("verify").style.backgroundColor = "Green"
   } else {
-    console.log("error")
-  }
+  document.getElementById("verify").innerHTML = "Error"}
 }
 </script>
 
-<!--Reset-->
 <script>
-  let color1 = "red"
-  function reset(){
+  function Reset(){{
     localStorage.removeItem("password");
-    document.getElementById("verify").style.backgroundColor = color1
-
-  }
+    document.getElementById("verify").style.backgroundColor = "Red";
+    document.getElementById("verify").innerHTML = "a"
+  }}
 </script>
