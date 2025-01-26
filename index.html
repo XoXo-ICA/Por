@@ -1,32 +1,65 @@
-<input type="email" id="B"></input>
-<input type="password" id="A"></input>
-<button type="button" onclick="Sub()" id="Sub">Submit</button>
-<button type="button" onclick="Login()" id="Login">Login</button>
+<!--Register-->
 
-<p id="display"></p>
-<p id="display1"></p>
+<input type="email" id="email" required placeholder="Email">
+<input type="password" id="password" required placeholder="password">
+<button onclick="register()">Register</button>
+<button onclick="reset()">reset</button>
+<p style="background-color: red;" id="verify">a</p>
+<style>
+
+#email:hover{
+  border-color: blue;
+
+}
+#password:hover{
+  border-color: blue;
+
+}
+</style>
 
 <script>
-let pass = ""
-let email = ""
-function Sub(){
-  pass = document.getElementById("A").value
-  document.getElementById("display").innerHTML = pass
-  document.getElementById("A").value = ""
+  let pass = ""
+  let email = ""
 
-  email = document.getElementById("B").value
-  document.getElementById("display1").innerHTML = email
-  document.getElementById("B").value = ""
-
+  function register(){
+  pass = document.getElementById("password").value
   localStorage.password = pass
-localStorage.email = email
-}
+  document.getElementById("password").value = ""
+  email = document.getElementById("email").value
+  localStorage.password = pass
+  localStorage.mail = email
+  document.getElementById("email").value = ""
+  }
+</script>
+<!--Login-->
 
+<input type="email1">
+<input type="password1">
+<button onclick="Login()">Login</button>
+
+<style>
+
+</style>
+
+<script>
+  let passlog = localStorage.password
+  let color = "Green"
+  
+  function Login(){
+  if (passlog == localStorage.password){
+  document.getElementById("verify").style.backgroundColor = color
+  } else {
+    console.log("error")
+  }
+}
 </script>
 
-<script>function Login(){
-  pass = document.getElementById("A").value =  localStorage.password;
-  email = document.getElementById("B").value = localStorage.email;
+<!--Reset-->
+<script>
+  let color1 = "red"
+  function reset(){
+    localStorage.removeItem("password");
+    document.getElementById("verify").style.backgroundColor = color1
 
-}
+  }
 </script>
